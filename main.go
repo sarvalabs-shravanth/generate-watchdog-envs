@@ -130,7 +130,7 @@ func main() {
 
 	// Convert the key to a hexadecimal string and print it
 	keyHex := hex.EncodeToString(key)
-	fmt.Println("ENCRYPTION_KEY:", keyHex)
+	fmt.Println("export ENCRYPTION_KEY=", keyHex)
 
 	iv, err := generateIV()
 	if err != nil {
@@ -140,7 +140,7 @@ func main() {
 
 	// Convert the IV to a hexadecimal string and print it
 	ivHex := hex.EncodeToString(iv)
-	fmt.Println("ENCRYPTION_NONCE:", ivHex)
+	fmt.Println("export ENCRYPTION_NONCE=", ivHex)
 
 	encryptedAPIKey, err := EncryptAPIKey(apiKey, keyHex, ivHex)
 	if err != nil {
@@ -154,5 +154,5 @@ func main() {
 		return
 	}
 
-	fmt.Println("WATCHDOG_HASHED_API:", hashedAPIKey)
+	fmt.Println("export WATCHDOG_HASHED_API=", hashedAPIKey)
 }
